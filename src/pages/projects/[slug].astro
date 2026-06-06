@@ -1,0 +1,174 @@
+---
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Container from '../../components/ui/Container.astro';
+
+export const getStaticPaths = (async () => {
+  const projects = await getCollection('projects');
+  return projects.map((project) => ({
+    params: { slug: project.id },
+    props: { project },
+  }));
+}) satisfies GetStaticPaths;
+
+const { project } = Astro.props;
+const { title, description, techs, links, image, apkUrl } = project.data;
+---
+
+<BaseLayout title={title} description={description}>
+  <Container>
+    <div class='project-detail'>
+      <a href='/projects' class='back-link'>
+        <i class='fa-solid fa-arrow-left' /> Projects
+      </a>
+
+      <header>
+        <h1>{title}</h1>
+        <p class='description'>{description}</p>
+
+        {
+          techs && (
+            <div class='tags'>
+              {techs.map((tech) => (
+                <span>{tech}</span>
+              ))}
+            </div>
+          )
+        }
+
+        <div class='actions'>
+          {
+            apkUrl && (
+              <a href={apkUrl} target='_blank' rel='noopener noreferrer' class='btn btn-primary'>
+                <i class='fa-solid fa-download' /> Download APK
+              </a>
+            )
+          }
+          {
+            links &&
+              links.map((link) => (
+                <a
+                  href={link.url}
+                  target='_blank'
+                  rel='noopener noreferrer'
+                  class='btn btn-secondary'
+                >
+                  {link.name === 'Github' ? (
+                    <i class='fa-brands fa-github' />
+                  ) : (
+                    <i class='fa-solid fa-arrow-up-right-from-square' />
+                  )}
+                  {link.name}
+                </a>
+              ))
+          }
+        </div>
+      </header>
+
+      {
+        image && (
+          <div class='image-wrapper'>
+            <img src={image} alt={`${title} screenshot`} />
+          </div>
+        )
+      }
+    </div>
+  </Container>
+</BaseLayout>
+
+<style>
+  .project-detail {
+    padding: 2rem 0 4rem;
+    max-width: 720px;
+    margin: 0 auto;
+  }
+
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: var(--text-sm);
+    opacity: 0.6;
+    margin-bottom: 2.5rem;
+    transition: opacity 0.2s;
+  }
+
+  .back-link:hover {
+    opacity: 1;
+  }
+
+  header {
+    margin-bottom: 2.5rem;
+  }
+
+  h1 {
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .description {
+    color: var(--text-muted);
+    line-height: 1.7;
+    margin-bottom: 1.25rem;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.75rem;
+  }
+
+  .tags span {
+    font-size: var(--text-xs);
+    opacity: 0.5;
+    background-color: var(--border-color);
+    padding: 3px 10px;
+    border-radius: 6px;
+  }
+
+  .actions {
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.25rem;
+    border-radius: 8px;
+    font-size: var(--text-sm);
+    font-weight: 500;
+    transition: opacity 0.2s;
+    text-decoration: none;
+  }
+
+  .btn:hover {
+    opacity: 0.85;
+  }
+
+  .btn-primary {
+    background-color: var(--text-color);
+    color: var(--bg-color);
+  }
+
+  .btn-secondary {
+    background-color: var(--border-color);
+    color: var(--text-color);
+  }
+
+  .image-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+  }
+
+  .image-wrapper img {
+    width: 100%;
+    display: block;
+    object-fit: cover;
+  }
+</style>

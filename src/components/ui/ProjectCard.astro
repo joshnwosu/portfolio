@@ -4,9 +4,10 @@ interface Props {
   description?: string;
   techs?: string[];
   links?: any[];
+  slug?: string;
 }
 
-const { title, description, techs, links } = Astro.props;
+const { title, description, techs, links, slug } = Astro.props;
 ---
 
 <article>
@@ -25,18 +26,25 @@ const { title, description, techs, links } = Astro.props;
   }
 
   {
-    links && (
+    (links || slug) && (
       <div class='project-links'>
-        {links.map((link) => (
+        {slug && (
           <span>
-            <a href={link.url}>{link.name}</a>
-            {link.name === 'Github' ? (
-              <i class='fa-brands fa-github' />
-            ) : (
-              <i class='fa-solid fa-arrow-up-right-from-square' />
-            )}
+            <a href={`/projects/${slug}`}>Details</a>
+            <i class='fa-solid fa-chevron-right' />
           </span>
-        ))}
+        )}
+        {links &&
+          links.map((link) => (
+            <span>
+              <a href={link.url} target='_blank' rel='noopener noreferrer'>{link.name}</a>
+              {link.name === 'Github' ? (
+                <i class='fa-brands fa-github' />
+              ) : (
+                <i class='fa-solid fa-arrow-up-right-from-square' />
+              )}
+            </span>
+          ))}
       </div>
     )
   }

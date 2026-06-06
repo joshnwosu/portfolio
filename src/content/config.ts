@@ -38,7 +38,10 @@ const projects = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string(),
+    order: z.number().optional().default(99),
     featured: z.boolean().optional().default(false),
+    image: z.string().optional(),
+    apkUrl: z.string().optional(),
     techs: z.array(z.string()).optional(),
     links: z
       .array(

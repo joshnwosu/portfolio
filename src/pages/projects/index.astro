@@ -6,7 +6,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ContentList from '../../components/shared/ContentList.astro';
 import ProjectCard from '../../components/ui/ProjectCard.astro';
 
-const projects = await getCollection('projects');
+const projects = (await getCollection('projects')).sort(
+  (a, b) => (a.data.order ?? 99) - (b.data.order ?? 99)
+);
 ---
 
 <BaseLayout title='Projects' description='My projects'>
@@ -27,6 +29,7 @@ const projects = await getCollection('projects');
             description={project.data.description}
             links={project.data.links}
             techs={project.data.techs}
+            slug={project.id}
           />
         ))
       }

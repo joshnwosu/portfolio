@@ -20,6 +20,7 @@ const site: CollectionEntry<'site'>['data'] = siteConfig.data;
 const projects = await getCollection('projects');
 const featuredProjects = projects
   .filter((project: CollectionEntry<'projects'>) => project.data.featured)
+  .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99))
   .slice(0, 2);
 ---
 
@@ -64,6 +65,7 @@ const featuredProjects = projects
               description={project.data.description}
               links={project.data.links}
               techs={project.data.techs}
+              slug={project.id}
             />
           ))
         }
