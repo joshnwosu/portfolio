@@ -5,7 +5,7 @@ url: 'https://devflow-demo.vercel.app'
 order: 3
 featured: true
 image: '/images/chlff.png'
-techs: ['React', 'TypeScript', 'FireBase', 'Game']
+techs: ['React', 'TypeScript', 'FireBase', 'Game', 'Web']
 links:
   [
     { name: 'Github', url: 'https://github.com/joshnwosu/chlff' },
