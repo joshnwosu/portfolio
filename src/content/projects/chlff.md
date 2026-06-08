@@ -1,6 +1,6 @@
 ---
 title: 'CHLFF - Children Learning For Fun'
-description: 'A modern Stack Overflow alternative built with Next.js 13, TypeScript, and MongoDB. Features real-time updates, AI-powered answer suggestions, and a responsive design.'
+description: 'A gamified educational web platform for children built with React, TypeScript, and Firebase. Features interactive mini-games (car racing, fish catching) with embedded assessments, a leaderboard system, level progression, grade selection, and role-based auth for students, teachers, and parents.'
 url: 'https://devflow-demo.vercel.app'
 order: 3
 featured: true
