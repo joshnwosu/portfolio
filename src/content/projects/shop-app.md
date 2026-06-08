@@ -5,6 +5,6 @@ order: 2
 featured: true
 image: '/images/shop-app.webp'
 apkUrl: 'https://expo.dev/accounts/sturdy/projects/ShopApp/builds/6447beef-2068-4b75-a802-35627441ee3b'
-techs: ['React Native', 'Expo', 'TypeScript', 'Zustand']
+techs: ['React Native', 'Expo', 'TypeScript', 'Zustand', 'Android', 'iOS']
 links: [{ name: 'Github', url: 'https://github.com/joshnwosu/ShopApp' }]
 ---
