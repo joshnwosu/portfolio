@@ -168,6 +168,10 @@ const isActive = (path: string) => {
     color: #ef4444;
   }
 
+  a.active:has(.dot)::after {
+    background-color: #ef4444;
+  }
+
   @media (hover: none) {
     a:hover {
       color: var(--text-muted);
