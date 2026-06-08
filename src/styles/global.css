@@ -266,7 +266,7 @@ pre {
 }
 
 pre {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--hover-bg);
   border-radius: 0.5rem;
   padding: 1rem;
   margin: 1.5rem 0;
@@ -274,7 +274,7 @@ pre {
 }
 
 code {
-  background: rgba(255, 255, 255, 0.05);
+  background: var(--hover-bg);
   padding: 0.2em 0.4em;
   border-radius: 0.25rem;
 }
@@ -433,4 +433,20 @@ h3 {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
+}
+
+@media (prefers-color-scheme: light) {
+  h1,
+  h2,
+  h3 {
+    background: linear-gradient(
+      135deg,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.75) 50%,
+      rgba(0, 0, 0, 0.6) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
 }

@@ -21,6 +21,25 @@
   --transition-base: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+@media (prefers-color-scheme: light) {
+  :root {
+    --bg-color: #f5f5f5;
+    --bg-color-muted: #ebebeb;
+
+    --text-color: #111111;
+    --text-muted: #555555;
+    --link-color: #2563eb;
+    --border-color: rgba(0, 0, 0, 0.1);
+    --hover-bg: rgba(0, 0, 0, 0.04);
+
+    --mesh-color-1: rgba(123, 104, 238, 0.12);
+    --mesh-color-2: rgba(72, 61, 139, 0.08);
+
+    --glow-color: rgba(139, 92, 246, 0.18);
+    --top-glow-color: rgba(0, 0, 0, 0.04);
+  }
+}
+
 /* Theme Transitions */
 .theme-transition {
   --theme-transition: var(--transition-base);
