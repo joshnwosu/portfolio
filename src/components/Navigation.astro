@@ -26,7 +26,9 @@ const isActive = (path: string) => {
             {name === "Let's Chat" && (
               <i class='fa-solid fa-envelope-open-text' />
             )}
-            {name}
+            {name === 'Josh.' ? (
+              <>Josh<span class='dot'>.</span></>
+            ) : name}
           </span>
           {isActive(path) && <span class='sr-only'>(current page)</span>}
         </a>
@@ -160,6 +162,10 @@ const isActive = (path: string) => {
     a {
       padding: 0.5rem 0;
     }
+  }
+
+  .dot {
+    color: #ef4444;
   }
 
   @media (hover: none) {
