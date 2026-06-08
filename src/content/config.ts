@@ -41,6 +41,7 @@ const projects = defineCollection({
     order: z.number().optional().default(99),
     featured: z.boolean().optional().default(false),
     image: z.string().optional(),
+    images: z.array(z.string()).optional(),
     apkUrl: z.string().optional(),
     techs: z.array(z.string()).optional(),
     links: z

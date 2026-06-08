@@ -13,7 +13,7 @@ export const getStaticPaths = (async () => {
 }) satisfies GetStaticPaths;
 
 const { project } = Astro.props;
-const { title, description, techs, links, image, apkUrl } = project.data;
+const { title, description, techs, links, image, images, apkUrl } = project.data;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -67,11 +67,19 @@ const { title, description, techs, links, image, apkUrl } = project.data;
       </header>
 
       {
-        image && (
+        images && images.length > 0 ? (
+          <div class='images-gallery'>
+            {images.map((src, i) => (
+              <div class='image-wrapper'>
+                <img src={src} alt={`${title} screenshot ${i + 1}`} />
+              </div>
+            ))}
+          </div>
+        ) : image ? (
           <div class='image-wrapper'>
             <img src={image} alt={`${title} screenshot`} />
           </div>
-        )
+        ) : null
       }
     </div>
   </Container>
@@ -170,5 +178,17 @@ const { title, description, techs, links, image, apkUrl } = project.data;
     width: 100%;
     display: block;
     object-fit: cover;
+  }
+
+  .images-gallery {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .images-gallery .image-wrapper {
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
   }
 </style>
