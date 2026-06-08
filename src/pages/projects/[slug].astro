@@ -181,8 +181,8 @@ const { title, description, techs, links, image, images, apkUrl } = project.data
   }
 
   .images-gallery {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
   }
 
