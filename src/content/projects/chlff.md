@@ -4,6 +4,7 @@ description: 'A modern Stack Overflow alternative built with Next.js 13, TypeScr
 url: 'https://devflow-demo.vercel.app'
 order: 3
 featured: true
+image: '/images/chlff.png'
 techs: ['React', 'TypeScript', 'FireBase', 'Game']
 links:
   [
