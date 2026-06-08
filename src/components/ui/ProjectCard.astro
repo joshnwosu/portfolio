@@ -107,4 +107,11 @@ const { title, description, techs, links, slug } = Astro.props;
   .project-links span:hover {
     opacity: 1;
   }
+
+  @media (max-width: 768px) {
+    .tags span {
+      font-size: 0.6rem;
+      padding: 2px 7px;
+    }
+  }
 </style>
