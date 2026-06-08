@@ -1,5 +1,5 @@
 ---
-title: 'ChatApp - Mobile'
+title: 'Murmur - Mobile'
 description: 'A real-time chat mobile app for iOS and Android built with Expo. Features a conversation list with category filtering (Contacts, Unread, Favorites, Groups), message search, swipe-to-action gestures, and a full chat view with bubble-style messaging and emoji support.'
 order: 2
 featured: true
